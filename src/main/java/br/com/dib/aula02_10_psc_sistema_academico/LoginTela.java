@@ -4,6 +4,8 @@
  */
 package br.com.dib.aula02_10_psc_sistema_academico;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 823149871
@@ -26,17 +28,21 @@ public class LoginTela extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
         loginLabel = new javax.swing.JLabel();
         loginTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         senhaPasswordField = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        entrarLoginButton = new javax.swing.JButton();
+        cancelarLoginButton = new javax.swing.JButton();
+
+        jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         loginLabel.setText("Login:");
 
-        loginTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(, null));
+        loginTextField1.setBorder(null);
         loginTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginTextField1ActionPerformed(evt);
@@ -45,14 +51,21 @@ public class LoginTela extends javax.swing.JFrame {
 
         jLabel1.setText("Senha:");
 
-        senhaPasswordField.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, null));
+        senhaPasswordField.setBorder(null);
         senhaPasswordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 senhaPasswordFieldActionPerformed(evt);
             }
         });
 
-        jButton1.setText("entrar");
+        entrarLoginButton.setText("entrar");
+        entrarLoginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                entrarLoginButtonActionPerformed(evt);
+            }
+        });
+
+        cancelarLoginButton.setText("cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,8 +86,10 @@ public class LoginTela extends javax.swing.JFrame {
                                 .addComponent(loginTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(54, 54, 54))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(93, 93, 93))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(cancelarLoginButton, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+                            .addComponent(entrarLoginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(105, 105, 105))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,8 +103,10 @@ public class LoginTela extends javax.swing.JFrame {
                     .addComponent(senhaPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addComponent(entrarLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cancelarLoginButton, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -102,6 +119,22 @@ public class LoginTela extends javax.swing.JFrame {
     private void senhaPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaPasswordFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_senhaPasswordFieldActionPerformed
+
+    private void entrarLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarLoginButtonActionPerformed
+     //1. Pegar login que o usuário digitou
+     String login = loginTextField1.getText();
+     //2. Pegar senha que o usuário digitou
+     String senha = new String(senhaPasswordField.getPassword());
+     //3. Verificar se ambos são iguais admin
+     if(login.equals("admin")&& senha.equals("admin")){
+     //4. Se for caso, der boas vindas
+     JOptionPane.showMessageDialog(null, "Bem vindo!");
+         }
+      else{
+         JOptionPane.showMessageDialog(null, "Usuario ou senha inválido");
+     }
+     //5. Caso contrário, informar par chave/valor incorreto
+    }//GEN-LAST:event_entrarLoginButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,8 +172,10 @@ public class LoginTela extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton cancelarLoginButton;
+    private javax.swing.JButton entrarLoginButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel loginLabel;
     private javax.swing.JTextField loginTextField1;
     private javax.swing.JPasswordField senhaPasswordField;
